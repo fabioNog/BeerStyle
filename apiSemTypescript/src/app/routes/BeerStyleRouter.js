@@ -1,13 +1,13 @@
 const BeerStyleRouter = require('express').Router();
-const UsuariosController = require('../controllers/UsuariosController');
+const BeerStyleController = require('../controllers/BeerStyleController');
+const AuthMiddleware = require('../middlewares/AuthMiddleware');
 
 //CRUD -> CREATE, READ, UPDATE AND DELETE
-BeerStyleRouter.post('/beerstyle', UsuariosController.create);
+BeerStyleRouter.post('/beerstyle', BeerStyleController.create);
 
-BeerStyleRouter.get('/beerstyle', UsuariosController.read);
 
-// BeerStyleRouter.patch('/beerstyle/:id', UsuariosController.update);
+// BeerStyleRouter.patch('/beerstyle/:id', BeerStyleController.update);
 
-// BeerStyleRouter.delete('/beerstyle/:id', UsuariosController.delete);
+// BeerStyleRouter.delete('/beerstyle/:id', BeerStyleController.delete);
 
 module.exports = BeerStyleRouter;
