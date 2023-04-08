@@ -1,14 +1,11 @@
 const Sequelize = require('sequelize');
 const dbConfig = require('../config/database');
 
-const UsuariosModel = require('../app/models/UsuariosModel');
-const SessoesModel = require('../app/models/SessoesModel');
+const BeearStyleModel = require('../app/models/BeearStyleModel');
 
 const connection = new Sequelize(dbConfig);
 
-UsuariosModel.init(connection);
-SessoesModel.init(connection);
+BeearStyleModel.init(connection);
 
-SessoesModel.associate(connection.models);
 
 module.exports = connection;
