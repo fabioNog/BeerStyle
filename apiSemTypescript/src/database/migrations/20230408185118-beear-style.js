@@ -1,20 +1,21 @@
 'use strict';
 
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable('usuarios', {
+  async up (queryInterface, Sequelize) {
+    return queryInterface.createTable('beerstyle', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
       },
-      nome: {
+      style: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      email: {
-        type: Sequelize.STRING,
+      temperature: {
+        type: Sequelize.INTEGER,
         allowNull: false
       },
       created_at: {
@@ -28,7 +29,7 @@ module.exports = {
     });
   },
 
-  down: async (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('usuarios');
+  async down (queryInterface, Sequelize) {
+    return queryInterface.dropTable('beerstyle');
   }
 };
