@@ -51,6 +51,35 @@ class BeerStyleController {
         }
     }
 
+    async findBeerStyleByTemperature(temperature) {
+        const beerstyle = await BeearStyleModel.findAll();
+
+        const beersWithDiff = beerstyle.map((beer) => {
+            const avgTemperature = (Number(beer.maxtemperature) + Number(beer.mintemperature)) / 2;
+            const diff = Math.abs(avgTemperature - temperature);
+            console.log(diff);
+            return {
+              beer,
+              diff,
+            };
+        });
+
+        const sortedBeers = beersWithDiff.sort((a, b) => a.diff - b.diff);
+        const closestDiff = sortedBeers[0].diff;
+        const closestBeers = sortedBeers.filter((beer) => beer.diff === closestDiff).map((beer) => beer.beer);
+    
+        const sortedClosestBeers = closestBeers.sort((a, b) => {
+          const result = a.style.localeCompare(b.style);
+          if (result === 0) {
+            return a.style.localeCompare(b.style);
+          }
+          return result;
+        });
+
+        return sortedClosestBeers[0];
+        
+    }
+
     update(){
 
     }
