@@ -5,6 +5,7 @@ class BeerStyleController {
     async create(req, res){
         try{
             const beerStyleData = req.body;
+            console.log(beerStyleData)
 
             const cervejaExiste =  await BeearStyleModel.findAll({
                 where: {
@@ -37,15 +38,15 @@ class BeerStyleController {
 
     async read(req, res){
         try{
-            const usuarios = await UsuariosModel.findAll();
+            const beerstyle = await BeearStyleModel.findAll();
             res.json({
-                msg: 'Usuários recuperados com sucesso!',
-                usuarios: usuarios
+                msg: 'Cerveja recuperada com sucesso!',
+                beerstyle: beerstyle
             });
         }catch(error){
             console.log(error);
             res.json({
-                msg: 'erro ao inserir usuario'
+                msg: 'erro ao buscar a cerveja'
             });
         }
     }
