@@ -57,7 +57,6 @@ class BeerStyleController {
         const beersWithDiff = beerstyle.map((beer) => {
             const avgTemperature = (Number(beer.maxtemperature) + Number(beer.mintemperature)) / 2;
             const diff = Math.abs(avgTemperature - temperature);
-            console.log(diff);
             return {
               beer,
               diff,
