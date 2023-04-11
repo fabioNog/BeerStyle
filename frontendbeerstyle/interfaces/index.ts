@@ -1,8 +1,7 @@
-export interface TaskType {
+export interface BeerType {
   style: string;
   mintemperature: number;
   maxtemperature: number;
-  done: boolean
 }
 
 export interface NavItemType {

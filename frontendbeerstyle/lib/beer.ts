@@ -1,9 +1,9 @@
-import { TaskType } from 'interfaces';
+import { BeerType } from 'interfaces';
 
 const BASE_URL = 'http://localhost:3001';
 
-export const taskApi = {
-  create: async (task: TaskType) => {
+export const beerApi = {
+  create: async (task: BeerType) => {
     const res = await fetch(`${BASE_URL}/beerstyle`, {
       headers: {
         Accept: 'application/json',
@@ -14,11 +14,11 @@ export const taskApi = {
     });
     return res.json();
   },
-  getAll: async (): Promise<TaskType[]> => {
+  getAll: async (): Promise<BeerType[]> => {
     const res = await fetch(`${BASE_URL}/beerstyle`);
     return res.json();
   },
-  update: async (task: TaskType) => {
+  update: async (task: BeerType) => {
     const res = await fetch(`${BASE_URL}/beerstyle/${task.mintemperature}`, {
       headers: {
         Accept: 'application/json',

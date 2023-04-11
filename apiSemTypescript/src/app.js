@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors'); 
 
 class App{
 
@@ -16,6 +17,9 @@ class App{
 
     middlewares(){
         this.express.use(express.json());
+        this.express.use(cors({
+            origin: 'http://localhost:3000'
+          }));
     }
 
     routes(){

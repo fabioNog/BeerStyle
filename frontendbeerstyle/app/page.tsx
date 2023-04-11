@@ -3,18 +3,45 @@ import React, { useCallback, useState } from "react";
 import AddTodoButton from "components/AddTodoButton";
 import TaskItem from "components/TaskItem";
 import InputStyle from "components/InputStyle";
-import { taskApi } from "lib/task";
+import { beerApi } from 'lib/beer';
+import { FaPlus } from 'react-icons/fa';
+import { useRouter } from "next/navigation";
+
 
 interface InputProps {
   label: string;
 }
 
 const Home: React.FC<InputProps> = () => {
-  const [value, setValue] = useState<string>("");
+  const [style, setStyle] = useState<string>("");
+  const [minTemperature, setminTemperature] = useState<number>(0);
+  const [maxTemperature, setMaxTemperature] = useState<number>(0);
+  const router = useRouter();
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
-    console.log(value);
+  const handleStyleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setStyle(event.target.value);
+    console.log(style);
+  };
+
+  const handleMinTemperatureChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const minTemp = Number(event.target.value);
+    setminTemperature(minTemp);
+    console.log(minTemperature);
+  };
+
+  const handleMaxTemperatureChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const maxTemp = Number(event.target.value);
+    setMaxTemperature(maxTemp);
+    console.log(maxTemperature);
+  };
+
+  const handleAddBeer = async () => {
+    await beerApi.create({
+      style: style,
+      mintemperature: minTemperature ,
+      maxtemperature: maxTemperature
+    });
+    router.refresh();
   };
 
   return (
@@ -28,26 +55,27 @@ const Home: React.FC<InputProps> = () => {
           <input
             id="input1"
             type="text"
-            onChange={handleChange}
+            onChange={handleStyleChange}
             className="w-full"
           />
           <label htmlFor="input2">Temperatura Mínima:</label>
           <input
             id="input2"
             type="number"
-            onChange={handleChange}
+            onChange={handleMinTemperatureChange}
             className="w-full"
           />
           <label htmlFor="input2">Temperatura Maxima:</label>
           <input
             id="input2"
             type="number"
-            onChange={handleChange}
+            onChange={handleMaxTemperatureChange}
             className="w-full"
           />
           <button
             className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
-            type="submit"
+            type="button"
+            onClick={handleAddBeer}
           >
             Enviar
           </button>
