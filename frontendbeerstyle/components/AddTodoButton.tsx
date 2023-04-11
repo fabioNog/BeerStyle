@@ -10,20 +10,25 @@ const AddTodoButton: React.FC = () => {
 
   const handleAddTask = async () => {
     await taskApi.create({
-      id: uuidV4(),
-      subject: '',
-      done: false,
+      style: '',
+      done: true,
+      mintemperature: 0,
+      maxtemperature: 0,
     });
     router.refresh();
   };
 
+  
+
   return (
-    <button
-      type='button'
-      onClick={handleAddTask}
-      className='fixed right-5 bottom-5 grid place-items-center w-16 h-16 rounded-full bg-[#0b9219] text-white text-xl'>
-      <FaPlus />
-    </button>
+
+      <button
+        type='button'
+        data-modal-target="defaultModal" data-modal-toggle="defaultModal"
+        onClick={handleAddTask}
+        className='fixed right-5 bottom-5 grid place-items-center w-16 h-16 rounded-full bg-[#0b9219] text-white text-xl'>
+        <FaPlus />
+      </button>
   );
 };
 

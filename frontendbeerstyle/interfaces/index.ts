@@ -2,6 +2,7 @@ export interface TaskType {
   style: string;
   mintemperature: number;
   maxtemperature: number;
+  done: boolean
 }
 
 export interface NavItemType {
