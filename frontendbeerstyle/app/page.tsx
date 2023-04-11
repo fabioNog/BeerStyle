@@ -2,7 +2,6 @@
 import React, { useCallback, useState } from "react";
 import AddTodoButton from "components/AddTodoButton";
 import TaskItem from "components/TaskItem";
-import InputStyle from "components/InputStyle";
 import Input from "components/Input";
 import { beerApi } from 'lib/beer';
 import { FaPlus } from 'react-icons/fa';
@@ -56,7 +55,7 @@ const Home: React.FC<InputProps> = () => {
           <Input id="input1" type="text" onChange={handleStyleChange}/>
           <Input id="input2" type="number" onChange={handleMinTemperatureChange}/>
           <Input id="input3" type="number" onChange={handleMaxTemperatureChange}/>
-          
+
           <button
             className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
             type="button"
