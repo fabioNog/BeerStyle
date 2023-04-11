@@ -12,7 +12,7 @@ interface InputProps {
   label: string;
 }
 
-const Home: React.FC<InputProps> = () => {
+const Home: React.FC<InputProps> = ({ label}: InputProps) => {
   const [style, setStyle] = useState<string>("");
   const [minTemperature, setminTemperature] = useState<number>(0);
   const [maxTemperature, setMaxTemperature] = useState<number>(0);
