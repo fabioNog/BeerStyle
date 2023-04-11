@@ -7,42 +7,42 @@ import { beerApi } from 'lib/beer';
 import { FaPlus } from 'react-icons/fa';
 import { useRouter } from "next/navigation";
 
+interface InputProps {}
 
-interface InputProps {
-  label: string;
-}
-
-const Home: React.FC<InputProps> = ({ label}: InputProps) => {
-  const [style, setStyle] = useState<string>("");
-  const [minTemperature, setminTemperature] = useState<number>(0);
-  const [maxTemperature, setMaxTemperature] = useState<number>(0);
+const Home: React.FC<InputProps> = () => {
+  const [style, setStyle] = useState("");
+  const [minTemperature, setMinTemperature] = useState(0);
+  const [maxTemperature, setMaxTemperature] = useState(0);
   const router = useRouter();
 
-  const handleStyleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setStyle(event.target.value);
-    console.log(style);
-  };
+  const handleStyleChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setStyle(event.target.value);
+    },
+    []
+  );
 
-  const handleMinTemperatureChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const minTemp = Number(event.target.value);
-    setminTemperature(minTemp);
-    console.log(minTemperature);
-  };
+  const handleMinTemperatureChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setMinTemperature(Number(event.target.value));
+    },
+    []
+  );
 
-  const handleMaxTemperatureChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const maxTemp = Number(event.target.value);
-    setMaxTemperature(maxTemp);
-    console.log(maxTemperature);
-  };
+  const handleMaxTemperatureChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setMaxTemperature(Number(event.target.value));
+    },
+    []
+  );
 
-  const handleAddBeer = async () => {
+  const handleSubmit = useCallback(async () => {
     await beerApi.create({
       style: style,
-      mintemperature: minTemperature ,
+      mintemperature: minTemperature,
       maxtemperature: maxTemperature
     });
-    router.refresh();
-  };
+  }, [style, minTemperature, maxTemperature]);
 
   return (
     <div
@@ -50,16 +50,15 @@ const Home: React.FC<InputProps> = ({ label}: InputProps) => {
     max-h-full overflow-auto rounded bg-black/10 dark:bg-white/5"
     >
       <div className="flex bg-white dark:bg-[#1c1c1c] p-2 mb-2 last:mb-0 rounded cursor-pointer">
-        <form className="flex-1 flex flex-col space-y-4">
+        <form className="flex-1 flex flex-col space-y-4" onSubmit={handleSubmit}>
           <label htmlFor="input1">Estilo da Cerveja</label>
-          <Input id="input1" type="text" onChange={handleStyleChange}/>
-          <Input id="input2" type="number" onChange={handleMinTemperatureChange}/>
-          <Input id="input3" type="number" onChange={handleMaxTemperatureChange}/>
+          <Input id="input1" type="text" onChange={handleStyleChange} required />
+          <Input id="input2" type="number" onChange={handleMinTemperatureChange} required />
+          <Input id="input3" type="number" onChange={handleMaxTemperatureChange} required />
 
           <button
             className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
-            type="button"
-            onClick={handleAddBeer}
+            type="submit"
           >
             Enviar
           </button>
