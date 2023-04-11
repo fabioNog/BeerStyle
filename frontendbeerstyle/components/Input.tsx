@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { InputHTMLAttributes, ChangeEvent } from 'react';
 
-interface Props {
-  name: string;
-  disabled: boolean;
-  value: string;
-  onChange: (newValue: string) => void;
+
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  id: string;
+  type: string;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input: React.FC<Props> = ({ onChange, ...props }) => {
+const Input  = ({ onChange,type, ...props }: InputProps) => {
   return (
     <input
-      type='text'
+      type={type}
       {...props}
       autoComplete='off'
-      onChange={(e) => onChange(e.target.value)}
+      onChange={onChange}
       className='w-full p-1 outline-none focus:outline-[#0b9219] rounded bg-transparent disabled:line-through disabled:text-gray-400'
     />
   );
