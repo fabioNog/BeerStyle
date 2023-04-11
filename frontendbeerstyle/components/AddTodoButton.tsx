@@ -1,31 +1,30 @@
 "use client";
 import { v4 as uuidV4 } from "uuid";
-import { taskApi } from "lib/task";
+import { beerApi } from "lib/beer";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { InputHTMLAttributes,MouseEvent } from 'react';
 import { FaPlus } from "react-icons/fa";
 
-const AddTodoButton: React.FC = () => {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  type: string;
+  stylebeer: string;
+  minTemperature:number;
+  maxTemperature:number;
+  onClick?: (event: MouseEvent<HTMLInputElement>) => void;
+}
+
+const AddTodoButton = ({ onClick,type,stylebeer,minTemperature,maxTemperature, ...props }: InputProps)  => {
   const router = useRouter();
 
   const handleAddBeer = async () => {
     await beerApi.create({
-      style: style,
+      style: stylebeer,
       mintemperature: minTemperature ,
       maxtemperature: maxTemperature
     });
     router.refresh();
   };
 
-  const handleAddTask = async () => {
-    await taskApi.create({
-      style: "",
-      done: true,
-      mintemperature: 0,
-      maxtemperature: 0,
-    });
-    router.refresh();
-  };
 
   return (
     <button
