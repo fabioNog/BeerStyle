@@ -1,11 +1,8 @@
 "use client";
 import React, { useCallback, useState } from "react";
 import AddTodoButton from "components/AddTodoButton";
-import TaskItem from "components/TaskItem";
 import Input from "components/Input";
 import { beerApi } from "lib/beer";
-import { FaPlus } from "react-icons/fa";
-import { useRouter } from "next/navigation";
 
 interface InputProps {}
 
@@ -13,8 +10,8 @@ const Home: React.FC<InputProps> = () => {
   const [stylebeer, setStyle] = useState("");
   const [minTemperature, setMinTemperature] = useState(0);
   const [maxTemperature, setMaxTemperature] = useState(0);
-  const router = useRouter();
 
+  
   const handleStyleChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setStyle(event.target.value);
