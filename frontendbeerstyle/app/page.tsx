@@ -3,6 +3,7 @@ import React, { useCallback, useState } from "react";
 import AddTodoButton from "components/AddTodoButton";
 import TaskItem from "components/TaskItem";
 import InputStyle from "components/InputStyle";
+import Input from "components/Input";
 import { beerApi } from 'lib/beer';
 import { FaPlus } from 'react-icons/fa';
 import { useRouter } from "next/navigation";
@@ -52,26 +53,10 @@ const Home: React.FC<InputProps> = () => {
       <div className="flex bg-white dark:bg-[#1c1c1c] p-2 mb-2 last:mb-0 rounded cursor-pointer">
         <form className="flex-1 flex flex-col space-y-4">
           <label htmlFor="input1">Estilo da Cerveja</label>
-          <input
-            id="input1"
-            type="text"
-            onChange={handleStyleChange}
-            className="w-full"
-          />
-          <label htmlFor="input2">Temperatura Mínima:</label>
-          <input
-            id="input2"
-            type="number"
-            onChange={handleMinTemperatureChange}
-            className="w-full"
-          />
-          <label htmlFor="input2">Temperatura Maxima:</label>
-          <input
-            id="input2"
-            type="number"
-            onChange={handleMaxTemperatureChange}
-            className="w-full"
-          />
+          <Input id="input1" type="text" onChange={handleStyleChange}/>
+          <Input id="input2" type="number" onChange={handleMinTemperatureChange}/>
+          <Input id="input3" type="number" onChange={handleMaxTemperatureChange}/>
+          
           <button
             className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
             type="button"
