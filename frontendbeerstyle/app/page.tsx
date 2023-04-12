@@ -35,7 +35,7 @@ const Home: React.FC<InputProps> = () => {
 
   const handleSubmit = useCallback(async () => {
     await beerApi.create({
-      style: stylebeer,
+      stylebeer: stylebeer,
       mintemperature: minTemperature,
       maxtemperature: maxTemperature,
     });

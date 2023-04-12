@@ -1,38 +1,23 @@
+import axios from 'axios';
 import { BeerType } from 'interfaces';
 
 const BASE_URL = 'http://localhost:3001';
 
 export const beerApi = {
   create: async (task: BeerType) => {
-    const res = await fetch(`${BASE_URL}/beerstyle`, {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-      body: JSON.stringify(task),
-    });
-    return res.json();
+    const res = await axios.post(`${BASE_URL}/beerstyle`, task);
+    return res.data;
   },
   getAll: async (): Promise<BeerType[]> => {
-    const res = await fetch(`${BASE_URL}/beerstyle`);
-    return res.json();
+    const res = await axios.get(`${BASE_URL}/beerstyle`);
+    return res.data;
   },
   update: async (task: BeerType) => {
-    const res = await fetch(`${BASE_URL}/beerstyle/${task.mintemperature}`, {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      method: 'PATCH',
-      body: JSON.stringify(task),
-    });
-    return res.json();
+    const res = await axios.patch(`${BASE_URL}/beerstyle/${task.mintemperature}`, task);
+    return res.data;
   },
   delete: async (id: string) => {
-    const res = await fetch(`${BASE_URL}/beerstyle/${id}`, {
-      method: 'DELETE',
-    });
-    return res.json();
+    const res = await axios.delete(`${BASE_URL}/beerstyle/${id}`);
+    return res.data;
   },
 };

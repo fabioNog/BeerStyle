@@ -1,5 +1,5 @@
 export interface BeerType {
-  style: string;
+  stylebeer: string;
   mintemperature: number;
   maxtemperature: number;
 }
