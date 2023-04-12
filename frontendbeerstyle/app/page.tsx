@@ -37,14 +37,20 @@ const Home: React.FC<InputProps> = () => {
     []
   );
 
-  const handleSubmit = useCallback(async () => {
+  const handleSubmit = useCallback(async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     try {
       await beerApi.create({
         stylebeer,
         mintemperature: minTemperature,
         maxtemperature: maxTemperature,
       });
-      toast.success('Cerveja criada com sucesso!');
+      toast.success('Cerveja criada com sucesso!', {
+        autoClose: 4000 // toast fica visível por 5 segundos
+      });
+      setTimeout(() => {
+        window.location.reload();
+      }, 4000)
     } catch (error) {
       console.log(error);
       toast.error('Erro ao criar cerveja');
@@ -91,6 +97,7 @@ const Home: React.FC<InputProps> = () => {
             minTemperature={minTemperature}
           />
         </form>
+        <ToastContainer />
       </div>
     </div>
   );
