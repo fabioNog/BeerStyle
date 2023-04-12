@@ -30,7 +30,7 @@ const Ideal: React.FC = () => {
       });
       
     } catch (error) {
-      toast.error(error.message, {
+      toast.error('Erro ao inserir', {
         autoClose: 3000 // toast fica visível por 5 segundos
       });
     }
