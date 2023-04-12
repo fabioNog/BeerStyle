@@ -9,7 +9,7 @@ const About: React.FC = () => {
         Olá! Seja bem vindos a nossa cervejaria.
       </p>
       <Link
-        href='https://github.com/sonvt-fe'
+        href='https://github.com/fabioNog'
         target='_blank'
         rel='noopener noreferrer'
         className='block text-center text-lg text-white bg-violet-500 rounded-2xl p-2 my-4'>

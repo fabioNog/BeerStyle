@@ -46,14 +46,19 @@ const Home: React.FC<InputProps> = () => {
         maxtemperature: maxTemperature,
       });
       toast.success('Cerveja criada com sucesso!', {
-        autoClose: 4000 // toast fica visível por 5 segundos
+        autoClose: 3000 // toast fica visível por 5 segundos
       });
       setTimeout(() => {
         window.location.reload();
-      }, 4000)
+      }, 3000)
     } catch (error) {
       console.log(error);
-      toast.error('Erro ao criar cerveja');
+      toast.error('Erro ao criar cerveja', {
+        autoClose: 3000 // toast fica visível por 5 segundos
+      });
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000)
     }
   }, [stylebeer, minTemperature, maxTemperature]);
 
