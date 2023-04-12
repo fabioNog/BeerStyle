@@ -11,7 +11,7 @@ const Home: React.FC<InputProps> = () => {
   const [minTemperature, setMinTemperature] = useState(0);
   const [maxTemperature, setMaxTemperature] = useState(0);
 
-  
+
   const handleStyleChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setStyle(event.target.value);
@@ -58,12 +58,14 @@ const Home: React.FC<InputProps> = () => {
             onChange={handleStyleChange}
             required
           />
+          <label htmlFor="input1">Temperatura Mínima</label>
           <Input
             id="input2"
             type="number"
             onChange={handleMinTemperatureChange}
             required
           />
+          <label htmlFor="input1">Temperatura Máxima</label>
           <Input
             id="input3"
             type="number"
