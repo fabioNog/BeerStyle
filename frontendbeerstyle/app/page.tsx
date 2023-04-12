@@ -4,6 +4,10 @@ import AddTodoButton from "components/AddTodoButton";
 import Input from "components/Input";
 import { beerApi } from "lib/beer";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 interface InputProps {}
 
 const Home: React.FC<InputProps> = () => {
@@ -34,11 +38,17 @@ const Home: React.FC<InputProps> = () => {
   );
 
   const handleSubmit = useCallback(async () => {
-    await beerApi.create({
-      stylebeer: stylebeer,
-      mintemperature: minTemperature,
-      maxtemperature: maxTemperature,
-    });
+    try {
+      await beerApi.create({
+        stylebeer,
+        mintemperature: minTemperature,
+        maxtemperature: maxTemperature,
+      });
+      toast.success('Cerveja criada com sucesso!');
+    } catch (error) {
+      console.log(error);
+      toast.error('Erro ao criar cerveja');
+    }
   }, [stylebeer, minTemperature, maxTemperature]);
 
   return (

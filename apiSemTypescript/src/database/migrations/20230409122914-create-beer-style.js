@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      style: {
+      stylebeer: {
         type: Sequelize.STRING
       },
       maxtemperature: {

@@ -4,8 +4,6 @@ import { beerApi } from "lib/beer";
 import { useRouter } from "next/navigation";
 import React, { InputHTMLAttributes,MouseEvent } from 'react';
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   type: string;
@@ -25,8 +23,6 @@ const AddTodoButton = ({ onClick,type,stylebeer,minTemperature,maxTemperature, .
       maxtemperature: maxTemperature
     });
     router.refresh();
-
-    toast.success('Cerveja criada com sucesso!');
   };
 
 

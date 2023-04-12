@@ -3,7 +3,7 @@ const { Model, DataTypes } = require('sequelize');
 class BeearStyleModel extends Model {
     static init(sequelize){
         super.init({
-            style: DataTypes.STRING,
+            stylebeer: DataTypes.STRING,
             maxtemperature: DataTypes.INTEGER,
             mintemperature: DataTypes.INTEGER,
         }, {

@@ -9,7 +9,7 @@ class BeerStyleController {
 
             const cervejaExiste =  await BeearStyleModel.findAll({
                 where: {
-                    style: beerStyleData.style
+                    stylebeer: beerStyleData.stylebeer
                 }
             });
 
@@ -68,9 +68,9 @@ class BeerStyleController {
         const closestBeers = sortedBeers.filter((beer) => beer.diff === closestDiff).map((beer) => beer.beer);
     
         const sortedClosestBeers = closestBeers.sort((a, b) => {
-          const result = a.style.localeCompare(b.style);
+          const result = a.stylebeer.localeCompare(b.stylebeer);
           if (result === 0) {
-            return a.style.localeCompare(b.style);
+            return a.stylebeer.localeCompare(b.stylebeer);
           }
           return result;
         });
