@@ -7,24 +7,10 @@ import React, { InputHTMLAttributes,MouseEvent } from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   type: string;
-  stylebeer: string;
-  minTemperature:number;
-  maxTemperature:number;
-  onClick?: (event: MouseEvent<HTMLInputElement>) => void;
 }
 
-const AddTodoButton = ({ onClick,type,stylebeer,minTemperature,maxTemperature, ...props }: InputProps)  => {
+const AddTodoButton = ({  ...props }: InputProps)  => {
   const router = useRouter();
-
-  const handleAddBeer = async () => {
-    await beerApi.create({
-      stylebeer: stylebeer,
-      mintemperature: minTemperature ,
-      maxtemperature: maxTemperature
-    });
-    router.refresh();
-  };
-
 
   return (
     <button

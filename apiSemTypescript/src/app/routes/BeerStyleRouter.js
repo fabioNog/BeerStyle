@@ -6,7 +6,7 @@ const AuthMiddleware = require('../middlewares/AuthMiddleware');
 BeerStyleRouter.post('/beerstyle', BeerStyleController.create);
 BeerStyleRouter.get('/beerstyle', BeerStyleController.read);
 
-BeerStyleRouter.get('/beerstyle_temperature', async (req, res) => {
+BeerStyleRouter.patch('/beerstyle_temperature', async (req, res) => {
     const { temperature } = req.body;
     console.log(req.query);
     if (!temperature) {

@@ -10,3 +10,7 @@ export interface NavItemType {
   title: string;
   photo: string;
 }
+
+export interface TemperatureType{
+  temperature: number;
+}

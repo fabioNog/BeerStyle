@@ -97,9 +97,6 @@ const Home: React.FC<InputProps> = () => {
           <AddTodoButton
             className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
             type="submit"
-            stylebeer="stylebeer"
-            maxTemperature={maxTemperature}
-            minTemperature={minTemperature}
           />
         </form>
         <ToastContainer />
