@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { TemperatureType,BeerType } from 'interfaces';
 
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'https://beearstyledeploy.onrender.com';
 
 export const beerApi = {
   create: async (beer: BeerType) => {
