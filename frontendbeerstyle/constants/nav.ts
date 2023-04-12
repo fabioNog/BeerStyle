@@ -8,6 +8,12 @@ export const _nav: NavItemType[] = [
     title: 'Vamos Criar Nossas Cervejas!',
   },
   {
+    name: 'Cerveja Ideial',
+    link: '/ideal',
+    photo: '/about.png',
+    title: 'Busque sua Cerveja'
+  },
+  {
     name: 'Sobre',
     link: '/about',
     photo: '/about.png',
