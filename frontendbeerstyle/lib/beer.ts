@@ -1,17 +1,25 @@
-import axios from 'axios';
-import { TemperatureType,BeerType } from 'interfaces';
+import axios from "axios";
+import { TemperatureType, BeerType } from "interfaces";
 
-const BASE_URL = 'https://beearstyledeploy.onrender.com';
+const BASE_URL = "https://beearstyledeploy.onrender.com";
 
 export const beerApi = {
   create: async (beer: BeerType) => {
-    const res = await axios.post(`${BASE_URL}/beerstyle`, beer);
+    const config = {
+      headers: {
+        "Access-Control-Allow-Origin": "https://beer-style.vercel.app",
+      },
+    };
+    const res = await axios.post(`${BASE_URL}/beerstyle`, beer, config);
     return res.data;
   },
   getBeer: async (temperature: TemperatureType) => {
     console.log(temperature);
-    const res = await axios.patch(`${BASE_URL}/beerstyle_temperature`, temperature);
-    
+    const res = await axios.patch(
+      `${BASE_URL}/beerstyle_temperature`,
+      temperature
+    );
+
     return res.data;
   },
   getAll: async (): Promise<BeerType[]> => {
@@ -19,7 +27,10 @@ export const beerApi = {
     return res.data;
   },
   update: async (task: BeerType) => {
-    const res = await axios.patch(`${BASE_URL}/beerstyle/${task.mintemperature}`, task);
+    const res = await axios.patch(
+      `${BASE_URL}/beerstyle/${task.mintemperature}`,
+      task
+    );
     return res.data;
   },
   delete: async (id: string) => {
